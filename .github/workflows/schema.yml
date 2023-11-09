@@ -1,0 +1,23 @@
+name: GraphQL Schema Check
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  check-graphql-schema:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+
+    - name: Install Dependencies
+      run: npm install -g @graphql-inspector/cli
+
+    - name: Run GraphQL Inspector
+      run: graphql-inspector diff schema.graphql origin/main:schema.graphql
