@@ -20,12 +20,15 @@ jobs:
 
 
     - name: Install Dependencies
-      run: npm install -g @graphql-inspector/cli
+      run: |
+        npm install -g @graphql-inspector/cli
+        npm install graphql
 
     - name: Diagnostic Output
       run: |
-        ls -l   # List files in the current directory
-        cat schema.graphql  # Print the contents of the schema file
+        node -v
+        npm -v
+        npm list -g
 
     - name: Run GraphQL Inspector
       run: graphql-inspector diff schema.graphql origin/main:schema.graphql
