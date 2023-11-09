@@ -15,14 +15,12 @@ jobs:
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
-      with:
-        node-version: 14
 
 
     - name: Install Dependencies
       run: |
         npm install -g @graphql-inspector/cli
-        npm install graphql
+        npm install graphql@latest
 
     # - name: Diagnostic Output
     #   run: |
